@@ -30,6 +30,7 @@ class	Contact
 		void	save_info(std::string first_name, std::string last_name, std::string nickname,
 			std::string darkest_secret, std::string num);
 		void	aff_contact(void);
+		void	print_contact(std::string to_print);
 };
 
 #endif
