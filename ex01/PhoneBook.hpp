@@ -1,12 +1,3 @@
-
-
-
-
-
-
-
-
-
 #ifndef PHONEBOOK_HPP
 #define PHONEBOOK_HPP
 
@@ -22,7 +13,8 @@ class	PhoneBook
 		
 		PhoneBook( void );
 		~PhoneBook( void );
-		void	get_info(PhoneBook *book);
+		void	get_info();
+		void	aff_info();
 };
 
 #endif

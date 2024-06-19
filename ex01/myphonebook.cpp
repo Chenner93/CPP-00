@@ -1,15 +1,7 @@
-
-
-
-
-
-
-
-
-
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
 #include <iostream>
+#include <iomanip>
 
 PhoneBook::PhoneBook( void ) {
 
@@ -20,9 +12,9 @@ PhoneBook::~PhoneBook( void ) {
 	std::cout << "Destrutor called" << std::endl;
 };
 
-void	PhoneBook::get_info(PhoneBook *book) {
+void	PhoneBook::get_info( void ) {
 	
-	static int	i;
+	static int	i = 0;
 	std::string	first_name;
 	std::string	last_name;
 	std::string	nickname;
@@ -35,9 +27,25 @@ void	PhoneBook::get_info(PhoneBook *book) {
 	std::getline(std::cin, last_name);
 	std::cout << "What is his/her nickname?" << std::endl;
 	std::getline(std::cin, nickname);
-	std::cout << "What is his/her darkest secret?\nTell us EVERYTHING !!!" << std::endl;
+	std::cout << "What is his/her darkest secret?" << std::endl;
 	std::getline(std::cin, darkest_secret);
-	std::cout << "And finally, do you have an 06 ? ;D ;D ;D !" << std::endl;
+	std::cout << "What is his/her phone number" << std::endl;
 	std::getline(std::cin, num);
-	// save_info()
-}
+	this->contacts[i % 8].save_info(first_name, last_name, nickname, darkest_secret, num);
+	this->contacts[i % 8].afficher();
+};
+
+void PhoneBook::aff_info( void ) {
+
+	std::cout << std::setw(10) << "INDEX";	
+	std::cout << std::setw(10) << "FIRST NAME";	
+	std::cout << std::setw(10) << "LAST NAME";	
+	std::cout << std::setw(10) << "NICKNAME";	
+	std::cout << std::endl;
+
+	for (int i = 0; i < 8; i++) {
+		std::cout << std::setw(10) << i;
+		this->contacts[i].aff_contact();
+		std::cout << std::endl;
+	}
+};

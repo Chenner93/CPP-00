@@ -1,16 +1,8 @@
-
-
-
-
-
-
-
-
-
 #include <iostream>
 #include <string>
 #include <string.h>
 #include <unistd.h>
+#include <stdio.h>
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
 
@@ -20,16 +12,26 @@ int main()
 	std::string	line;
 	while (1)
 	{
+		std::cout << "> ";
 		std::getline(std::cin, line);
-		// std::cout << line << std::endl;
-		if (line.compare("END") == 0)
+		if (std::cin.eof())
+			return (0);
+		if (line.compare("EXIT") == 0)
 			break ;
 		else if (line.compare("ADD") == 0)
 		{
-			PhoneBook::get_info(&book);
+			book.get_info();
 		}
 		else if (line.compare("SEARCH") == 0)
 		{
+			book.aff_info();
+		}
+		else
+		{
+			std::cout << "Expected argument -> EXIT" << std::endl;
+			std::cout << "                  -> ADD" << std::endl;
+			std::cout << "                  -> SEARCH" << std::endl;
+
 		}
 	}
 	return (0);
