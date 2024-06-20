@@ -15,6 +15,8 @@ class	PhoneBook
 		~PhoneBook( void );
 		void	get_info();
 		void	aff_info();
+		bool	is_empty(int index);
+		void 	print_one_full_data(int index);
 };
 
 #endif

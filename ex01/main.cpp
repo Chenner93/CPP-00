@@ -6,10 +6,32 @@
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
 
-int main()
+static bool	check_syntax_index(PhoneBook &book)
+{
+	std::string	str;
+
+	std::cout << "Which index ?" << std::endl;
+	std::getline(std::cin, str);
+	if (str.length() > 1 || str.length() == 0 || atoi(str.c_str()) > 7)
+	{
+		std::cout << "Expected index between 0 and 7" << std::endl;
+		return (check_syntax_index(book));
+	}
+	else if (book.is_empty(atoi(str.c_str())) == true)
+	{
+		std::cout << "Slot empty" << std::endl;
+		return (false);	
+	}
+	else
+		book.print_one_full_data(atoi(str.c_str()));
+	return (true);
+}
+
+int main(void)
 {
 	PhoneBook	book;
 	std::string	line;
+
 	while (1)
 	{
 		std::cout << "> ";
@@ -25,6 +47,7 @@ int main()
 		else if (line.compare("SEARCH") == 0)
 		{
 			book.aff_info();
+			check_syntax_index(book);
 		}
 		else
 		{
